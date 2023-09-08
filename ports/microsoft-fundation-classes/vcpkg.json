@@ -1,0 +1,12 @@
+{
+  "name": "microsoft-fundation-classes",
+  "version": "0",
+  "description": "a stub package that ensures VS has MFC installed.",
+  "supports": "windows",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    }
+  ]
+}

@@ -1,19 +1,23 @@
 {
   "name": "qt5-webengine",
   "version": "5.15.10",
-  "port-version": 1,
+  "port-version": 2,
   "description": "Qt5 webengine Module;",
   "license": null,
   "supports": "!static",
   "dependencies": [
     {
-      "name": "atlmfc",
+      "name": "active-template-library",
       "platform": "windows"
     },
     {
       "name": "ffmpeg",
       "default-features": false,
       "platform": "!windows"
+    },
+    {
+      "name": "microsoft-fundation-classes",
+      "platform": "windows"
     },
     {
       "name": "qt5-base",

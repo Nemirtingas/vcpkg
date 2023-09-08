@@ -1,14 +1,14 @@
 {
   "name": "llvm",
   "version": "15.0.7",
-  "port-version": 6,
+  "port-version": 7,
   "description": "The LLVM Compiler Infrastructure.",
   "homepage": "https://llvm.org",
   "license": "Apache-2.0",
   "supports": "!uwp & !(arm & windows)",
   "dependencies": [
     {
-      "name": "atlmfc",
+      "name": "active-template-library",
       "platform": "windows & !mingw"
     },
     {
