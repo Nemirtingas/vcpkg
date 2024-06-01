@@ -1,0 +1,13 @@
+diff --git a/src/processor/stackwalker_selftest.cc b/src/processor/stackwalker_selftest.cc
+index dcb2df00..52157b29 100644
+--- a/src/processor/stackwalker_selftest.cc
++++ b/src/processor/stackwalker_selftest.cc
+@@ -60,7 +60,7 @@
+ #define __sparc__
+ #endif
+  
+-#if (defined(__SUNPRO_CC) || defined(__GNUC__)) && \
++#if 0 && (defined(__SUNPRO_CC) || defined(__GNUC__)) && \
+     (defined(__i386__) || defined(__ppc__) || defined(__sparc__))
+ 
+ 
