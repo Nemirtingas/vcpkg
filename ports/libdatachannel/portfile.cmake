@@ -6,9 +6,9 @@ endif()
 
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO paullouisageneau/libdatachannel
-    REF "v${VERSION}"
-    SHA512 92404a04895b2bf6054498b3726272c55ba41d67a34f5637461dd15b1da6004ca913c4448075696a7a4c904d003de888b1ab01d4239353d929df7ae0eafcfd95
+    REPO Nemirtingas/libdatachannel
+    REF "v${VERSION}_cxx14"
+    SHA512 c8ce30074836efc93879332b50d94c3821b1fa982fb0e9de1842b9b305bc07c7611336e001e657319dffe3dfbf228bd90da196bca83218f5bdfb309732989d69
     HEAD_REF master
     PATCHES 
         ${PATCHES}
