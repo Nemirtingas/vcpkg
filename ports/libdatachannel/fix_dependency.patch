@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f604628..1610166 100644
+index c77271a6..507c4346 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -239,7 +239,7 @@ set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+@@ -229,7 +229,7 @@ set(THREADS_PREFER_PTHREAD_FLAG TRUE)
  find_package(Threads REQUIRED)
  
  if(USE_SYSTEM_PLOG)
@@ -11,7 +11,7 @@ index f604628..1610166 100644
  else()
  	set(CMAKE_POLICY_DEFAULT_CMP0048 NEW)
  	add_subdirectory(deps/plog EXCLUDE_FROM_ALL)
-@@ -250,7 +250,7 @@ if(SCTP_DEBUG)
+@@ -240,7 +240,7 @@ if(SCTP_DEBUG)
  endif()
  
  if(USE_SYSTEM_USRSCTP)
@@ -20,7 +20,7 @@ index f604628..1610166 100644
  else()
  	option(sctp_build_shared_lib OFF)
  	option(sctp_build_programs OFF)
-@@ -294,7 +294,7 @@ target_include_directories(datachannel PUBLIC
+@@ -293,7 +293,7 @@ target_include_directories(datachannel PUBLIC
  target_include_directories(datachannel PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/rtc)
  target_include_directories(datachannel PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
  target_link_libraries(datachannel PRIVATE Threads::Threads)
@@ -29,7 +29,7 @@ index f604628..1610166 100644
  
  target_include_directories(datachannel-static PUBLIC
      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-@@ -302,7 +302,7 @@ target_include_directories(datachannel-static PUBLIC
+@@ -301,7 +301,7 @@ target_include_directories(datachannel-static PUBLIC
  target_include_directories(datachannel-static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/rtc)
  target_include_directories(datachannel-static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
  target_link_libraries(datachannel-static PRIVATE Threads::Threads)
@@ -38,3 +38,12 @@ index f604628..1610166 100644
  
  if(WIN32)
  	target_link_libraries(datachannel PUBLIC ws2_32) # winsock2
+@@ -409,7 +409,7 @@ else()
+ 	target_compile_definitions(datachannel PRIVATE USE_NICE=0)
+ 	target_compile_definitions(datachannel-static PRIVATE USE_NICE=0)
+ 	if(USE_SYSTEM_JUICE)
+-		find_package(LibJuice REQUIRED)
++		find_package(LibJuice CONFIG REQUIRED)
+ 		target_compile_definitions(datachannel PRIVATE RTC_SYSTEM_JUICE=1)
+ 		target_compile_definitions(datachannel-static PRIVATE RTC_SYSTEM_JUICE=1)
+ 		target_link_libraries(datachannel PRIVATE LibJuice::LibJuice)

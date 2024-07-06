@@ -2,7 +2,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO paullouisageneau/libjuice
     REF "v${VERSION}"
-    SHA512 0c690940fab9c29c52955ee96c254c086f4170c8e59a26b767b9ffc288db9ecc7195136f958b9773903201e2719279bca63c7f64b6bb89bf8a41b6dd1da4eb63
+    SHA512 9433db78b3caaab6aa974c47e812d1f337c804b217a1cbfef612dac97430d0bbc5d79cdca5f2493a09dd26f2451f8c31ab319c5fcdf080b0a49d8ae166440eb2
     HEAD_REF master
     PATCHES
         fix-for-vcpkg.patch
@@ -13,11 +13,14 @@ vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
         nettle USE_NETTLE
 )
 
+string(COMPARE EQUAL "${VCPKG_LIBRARY_LINKAGE}" "static" LIBJUICE_STATIC_LINKAGE)
+
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     OPTIONS
         ${FEATURE_OPTIONS}
         -DNO_TESTS=ON
+        -DLIBJUICE_STATIC_LINKAGE=${LIBJUICE_STATIC_LINKAGE}
 )
 
 vcpkg_cmake_install()
