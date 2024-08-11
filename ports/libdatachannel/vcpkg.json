@@ -11,6 +11,9 @@
     "openssl",
     "plog",
     "usrsctp",
+    "boost-thread",
+    "boost-variant",
+    "boost-optional",
     {
       "name": "vcpkg-cmake",
       "host": true
