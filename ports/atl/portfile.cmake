@@ -1,10 +1,8 @@
-find_path(ATLBASE_H
-  NAMES atlbase.h
-  PATHS $ENV{INCLUDE}
-)
-
-if(NOT ATLBASE_H)
-  message(FATAL_ERROR "Unable to locate 'atlbase.h'. Ensure you have installed the Active Template Library (ATL) component of Visual Studio.")
-endif()
-
 SET(VCPKG_POLICY_EMPTY_PACKAGE enabled)
+
+vcpkg_cmake_configure(
+    SOURCE_PATH "${CURRENT_PORT_DIR}"
+    OPTIONS
+        "-DCMAKE_PREFIX_PATH=${CURRENT_PACKAGES_DIR}"
+        "-DCMAKE_IGNORE_PATH=${CMAKE_IGNORE_PATH}"
+)

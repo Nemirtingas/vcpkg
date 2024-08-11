@@ -5,6 +5,10 @@
   "description": "A stub package that ensures Visual Studio has ATL/MFC installed.",
   "supports": "windows",
   "dependencies": [
-    "atl"
+    "atl",
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    }
   ]
 }
