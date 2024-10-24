@@ -1,0 +1,41 @@
+diff --git a/lib/common/cpu.h b/lib/common/cpu.h
+index 5d514ccb..dd79efb7 100644
+--- a/lib/common/cpu.h
++++ b/lib/common/cpu.h
+@@ -60,2 +60,3 @@ MEM_STATIC ZSTD_cpuid_t ZSTD_cpuid(void)
+     U32 n;
++#if defined(_M_X64)
+     __asm__(
+@@ -87,2 +88,31 @@ MEM_STATIC ZSTD_cpuid_t ZSTD_cpuid(void)
+     }
++#else
++    __asm__(
++        "push %%ebx\n\t"
++        "cpuid\n\t"
++        "pop %%ebx\n\t"
++        : "=a"(n)
++        : "a"(0)
++        : "ecx", "edx");
++    if (n >= 1) {
++      U32 f1a;
++      __asm__(
++          "push %%ebx\n\t"
++          "cpuid\n\t"
++          "pop %%ebx\n\t"
++          : "=a"(f1a), "=c"(f1c), "=d"(f1d)
++          : "a"(1)
++          :);
++    }
++    if (n >= 7) {
++      __asm__(
++          "push %%ebx\n\t"
++          "cpuid\n\t"
++          "mov %%ebx, %%eax\n\t"
++          "pop %%ebx"
++          : "=a"(f7b), "=c"(f7c)
++          : "a"(7), "c"(0)
++          : "edx");
++    }
++#endif
+ #endif
+ 
