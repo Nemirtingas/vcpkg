@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8a61757..b35e4b1 100644
+index 8a61757f..7b669127 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -234,7 +234,7 @@ set(THREADS_PREFER_PTHREAD_FLAG TRUE)
@@ -30,6 +30,24 @@ index 8a61757..b35e4b1 100644
  		if(NOT TARGET libSRTP::srtp2)
  			add_library(libSRTP::srtp2 UNKNOWN IMPORTED)
  			set_target_properties(libSRTP::srtp2 PROPERTIES
+@@ -375,13 +376,13 @@ if (USE_GNUTLS)
+ 		target_link_libraries(datachannel-static PRIVATE Nettle::Nettle)
+ 	endif()
+ elseif(USE_MBEDTLS)
+-	if(NOT TARGET MbedTLS::MbedTLS)
+-		find_package(MbedTLS 3 REQUIRED)
++	if(NOT TARGET MbedTLS::mbedtls)
++		find_package(MbedTLS CONFIG REQUIRED)
+ 	endif()
+ 	target_compile_definitions(datachannel PRIVATE USE_MBEDTLS=1)
+ 	target_compile_definitions(datachannel-static PRIVATE USE_MBEDTLS=1)
+-	target_link_libraries(datachannel PRIVATE MbedTLS::MbedTLS)
+-	target_link_libraries(datachannel-static PRIVATE MbedTLS::MbedTLS)
++	target_link_libraries(datachannel PRIVATE MbedTLS::mbedtls)
++	target_link_libraries(datachannel-static PRIVATE MbedTLS::mbedtls)
+ else()
+ 	if(APPLE)
+ 		# This is a bug in CMake that causes it to prefer the system version over
 @@ -475,8 +476,9 @@ install(
  )
  
@@ -55,7 +73,7 @@ index cb2b884..d0b77ca 100644
 +    if(NOT "@NO_MEDIA@")
 +        find_dependency(libSRTP CONFIG)
 +    endif()
-+    find_dependency(OpenSSL)
++    find_dependency(MbedTLS)
 +    find_dependency(LibJuice)
 +endif()
 +
