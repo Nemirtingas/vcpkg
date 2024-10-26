@@ -9,7 +9,7 @@
   "dependencies": [
     "libjuice",
     "nlohmann-json",
-    "openssl",
+    "mbedtls",
     "plog",
     "usrsctp",
     {
