@@ -1,8 +1,9 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO facebook/zstd
-    REF "v${VERSION}"
-    SHA512 ca12dffd86618ca008e1ecc79056c1129cb4e61668bf13a3cd5b2fa5c93bc9c92c80f64c1870c68b9c20009d9b3a834eac70db72242d5106125a1c53cccf8de8
+    #REF "v${VERSION}"
+    REF 72c16b187d27016b7634f5c6b7290e7c66ba44b3
+    SHA512 d726f94ee1fd97de27fc1cbe9cdc0209bef5192dce0aa5cd0f0c53b8d38ca512cbd5533dbe6a72dde50bbc10febf2790d498672825c13baafb6e574a4f5384ed
     HEAD_REF dev
     PATCHES
         no-static-suffix.patch
