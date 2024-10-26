@@ -35,6 +35,11 @@ vcpkg_cmake_configure(
         -DINSTALL_MBEDTLS_HEADERS=OFF
 )
 
+if(MBEDTLS_NO_AESNI)
+    vcpkg_replace_string("${SOURCE_PATH}/include/mbedtls/mbedtls_config.h" "#define MBEDTLS_AESNI_C" "//#define MBEDTLS_AESNI_C")
+endif()
+vcpkg_replace_string("${SOURCE_PATH}/include/mbedtls/mbedtls_config.h" "//#define MBEDTLS_SSL_DTLS_SRTP" "#define MBEDTLS_SSL_DTLS_SRTP")
+
 vcpkg_cmake_install()
 vcpkg_copy_pdbs()
 vcpkg_fixup_pkgconfig()
