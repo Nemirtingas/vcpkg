@@ -1,11 +1,11 @@
 vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 
-vcpkg_from_sourceforge(
+vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO bastard/libdisasm
-    REF 0.23
-    FILENAME "libdisasm-0.23.tar.gz"
-    SHA512 29eecfbfd8168188242278a1a38f0c90770d0581a52d4600ae6343829dd0d6607b98329f12a3d7409d43dd56dca6a7d1eb25d58a001c2bfd3eb8474c0e7879e7
+    REPO Nemirtingas/libdisasm
+    REF "v${VERSION}"
+    SHA512 b2ba0efc24195b906e16e30f639572defbe5686e03c9238a426aa522ccf4def47b6b9c9920019c9592031cfdfd8edf342435051cd2e9fbbd15f0a8fedc0fecd3
+    HEAD_REF main
     PATCHES sizeofvoid.patch
 )
 
