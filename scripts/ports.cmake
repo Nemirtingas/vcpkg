@@ -202,7 +202,7 @@ target system or to the host system. Use a prefixed variable instead.
             z_vcpkg_fixup_rpath_in_dir()
         endif()
         if(VCPKG_FIXUP_MACHO_RPATH OR (VCPKG_TARGET_IS_OSX AND NOT DEFINED VCPKG_FIXUP_MACHO_RPATH))
-            z_vcpkg_fixup_macho_rpath_in_dir()
+            #z_vcpkg_fixup_macho_rpath_in_dir()
         endif()
         include("${SCRIPTS}/build_info.cmake")
     endif()
