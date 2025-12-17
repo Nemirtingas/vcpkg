@@ -1,10 +1,8 @@
-find_path(AFXRES_H
-  NAMES afxres.h
-  PATHS $ENV{INCLUDE}
-)
-
-if(NOT AFXRES_H)
-  message(FATAL_ERROR "Unable to locate 'afxres.h'. Ensure you have installed the ATL/MFC component of Visual Studio.")
-endif()
-
 SET(VCPKG_POLICY_EMPTY_PACKAGE enabled)
+
+vcpkg_cmake_configure(
+    SOURCE_PATH "${CURRENT_PORT_DIR}"
+    OPTIONS
+        "-DCMAKE_PREFIX_PATH=${CURRENT_PACKAGES_DIR}"
+        "-DCMAKE_IGNORE_PATH=${CMAKE_IGNORE_PATH}"
+)
