@@ -3,5 +3,11 @@
   "version": "0",
   "port-version": 1,
   "description": "A stub package that ensures Visual Studio has Active Template Library (ATL) installed.",
-  "supports": "windows & !xbox"
+  "supports": "windows & !xbox",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    }
+  ]
 }
