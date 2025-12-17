@@ -34,6 +34,7 @@ vcpkg_cmake_configure(
     OPTIONS_DEBUG
         -DINSTALL_MBEDTLS_HEADERS=OFF
 )
+vcpkg_replace_string("${SOURCE_PATH}/include/mbedtls/mbedtls_config.h" "//#define MBEDTLS_SSL_DTLS_SRTP" "#define MBEDTLS_SSL_DTLS_SRTP")
 
 vcpkg_cmake_install()
 vcpkg_copy_pdbs()
