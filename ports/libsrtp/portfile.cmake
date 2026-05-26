@@ -6,6 +6,7 @@ vcpkg_from_github(
     PATCHES
         cmake-config.diff
         fix-runtime-destination.patch
+        warnings_not_errors.patch
 )
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
