@@ -24,6 +24,7 @@ vcpkg_cmake_configure(
         -DPREFER_SYSTEM_LIB=ON
         -DNO_EXAMPLES=ON
         -DNO_TESTS=ON
+        -DUSE_MBEDTLS=ON
 )
 
 vcpkg_cmake_install()
