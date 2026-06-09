@@ -1,0 +1,29 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 089592f..adc1c4c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -123,8 +123,24 @@ unset(_default_ext)
+ 
+ ## Implementation
+ 
++# Determine the default Boost.Context implementation
+ set(_default_impl fcontext)
+ 
++# llvm-ml has compatibility issues with some Boost.Context MASM sources,
++# so automatically fall back to winfib when it is used.
++if(CMAKE_ASM_MASM_COMPILER)
++    get_filename_component(
++        _masm_compiler_name
++        "${CMAKE_ASM_MASM_COMPILER}"
++        NAME_WE
++    )
++
++    if(_masm_compiler_name STREQUAL "llvm-ml")
++        set(_default_impl winfib)
++    endif()
++    unset(_masm_compiler_name)
++endif()
++
+ set(BOOST_CONTEXT_IMPLEMENTATION "${_default_impl}" CACHE STRING "Boost.Context implementation (fcontext, ucontext, winfib)")
+ set_property(CACHE BOOST_CONTEXT_IMPLEMENTATION PROPERTY STRINGS fcontext ucontext winfib)
+ 
