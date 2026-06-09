@@ -6,6 +6,8 @@ vcpkg_from_github(
     REF boost-${VERSION}
     SHA512 f4dc676e9560a87aa07e8e0e18bd2636d7b89d28f3290848a5877850581dc2128c552ec46a1b6a8cfbb6bf7bf6872c75df44b349a88b1a5ed5fb7e5a2eba470d
     HEAD_REF master
+    PATCHES
+        01-llvm-ml.patch
 )
 
 set(FEATURE_OPTIONS "")
