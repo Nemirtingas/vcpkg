@@ -1,8 +1,8 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO felixguendling/cista
-    REF "v${VERSION}"
-    SHA512 87679d9eba2b6ed1fe60b39163b13cebaee221127784b5906c82770455908375e6cdcca58d3994fb22eefe4d9605332ee2134c0420f5c11783868cffd7cfa0ee
+    REF 1d45f71aa50633b283443eacdf449d47c367787c # master, with CISTA_64BIT_OFFSET (#290)
+    SHA512 abe73412a5ca7738e1f1fec069f7b8b30cc146b0dee283ccc09c2debed923824b6ecfa4d8a2a680fddba2959c6b65b861ea28a53a761f196aef7848486b60f32
     HEAD_REF master
 )
 
@@ -12,6 +12,7 @@ vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     OPTIONS
         -DCISTA_INSTALL=ON
+        -DCISTA_64BIT_OFFSET=ON
 )
 
 vcpkg_cmake_install()
