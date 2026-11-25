@@ -1,0 +1,13 @@
+diff --git a/src/impl/utils.cpp b/src/impl/utils.cpp
+index a291bb4..bb1b5e6 100644
+--- a/src/impl/utils.cpp
++++ b/src/impl/utils.cpp
+@@ -138,7 +138,7 @@ std::seed_seq random_seed() {
+ 	seed.push_back(
+ 	    static_cast<unsigned int>(std::hash<std::thread::id>{}(std::this_thread::get_id())));
+ 
+-	return {seed.begin(), seed.end()};
++	return std::seed_seq(seed.begin(), seed.end());
+ }
+ 
+ uint64_t ntp_time() {

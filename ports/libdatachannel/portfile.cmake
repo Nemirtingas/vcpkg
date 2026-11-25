@@ -1,13 +1,13 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO paullouisageneau/libdatachannel
-    REF "v${VERSION}"
-    SHA512 fc4e1ae2b640e8439fb8ca490cfaa27461e74ee44abc1798d49a97a97f1de7fec5cc776b7dedf58e72eb0ccbb5bf0edaf92e4db8052980667567ef6e783b4b39
-    HEAD_REF master
+    REPO Nemirtingas/libdatachannel
+    REF b0b9347b82a6fabeb935d2fff90520020581b9ef # integration
+    SHA512 1ac6601c4798f26a54e69ca6ee115d5ce72764222169bf7b7d9de1c018bfe391216676d1b55b88a6ee285939aea85bb61a6be591e076d97c08757e2f50695400
+    HEAD_REF integration
     PATCHES
         dependencies.diff
         uwp-warnings.patch
-        nominmax.patch
+        seed-seq-libcxx.patch
 )
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
@@ -25,6 +25,7 @@ vcpkg_cmake_configure(
         -DPREFER_SYSTEM_LIB=ON
         -DNO_EXAMPLES=ON
         -DNO_TESTS=ON
+        -DUSE_MBEDTLS=ON
 )
 
 vcpkg_cmake_install()
